@@ -1,0 +1,8 @@
+#!/bin/bash
+
+BIN="$( cd  "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+ROOT=$( cd $BIN/../ && pwd )
+
+if [ -d $ROOT/build ]; then
+  rm -rf $ROOT/build
+fi

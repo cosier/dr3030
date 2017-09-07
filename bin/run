@@ -1,0 +1,33 @@
+#!/bin/bash
+
+BIN="$( cd  "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+ROOT=$( cd $BIN/../ && pwd )
+
+if [[ $1 == "clean" ]]; then
+  shift;
+  $BIN/clean
+fi
+
+if [[ $1 == "build" ]]; then
+  shift;
+  $BIN/build
+
+  if [[ $? != 0 ]]; then
+    echo "Build Failed"
+    exit 1
+  fi
+fi
+
+if [ ! -f $ROOT/build/src/dr3030/dr3030 ]; then
+  $BIN/build
+
+  if [[ $? != 0 ]]; then
+    echo "Build Failed"
+    exit 1
+  fi
+fi
+
+CMD="$ROOT/build/src/dr3030/dr3030 $@"
+echo $CMD
+echo "------------------------------------------------"
+$CMD
