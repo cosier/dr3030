@@ -25,12 +25,18 @@ set (DR_VERSION_DATE $ENV{BUILD_TIMESTAMP})
 # This project uses C11 Standard
 set( CMAKE_C_STANDARD 11 )
 
+set( DR_ROOT ${CMAKE_CURRENT_SOURCE_DIR})
+
 # Treat all warnings as intense errors.
 set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror")
 
-add_subdirectory("tests")
+add_subdirectory("vendor/dimappio")
 add_subdirectory("src/3030")
 add_subdirectory("src/main")
+add_subdirectory("tests")
+
+include_directories("vendor/dimappio/src")
+
 
 enable_testing ()
 

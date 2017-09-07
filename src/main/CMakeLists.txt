@@ -15,7 +15,10 @@ SET ( SRC_MAIN main.c )
 # 2. A Executable that utilises the library.
 add_executable(dr3030 ${SRC_MAIN})
 
-include_directories(${CMAKE_CURRENT_BINARY_DIR}/../../ )
+include_directories(
+  ${DR_ROOT}/src
+  ${DR_ROOT}/build
+  ${DR_ROOT}/vendor/dimappio/src)
 
 # Break into conditionals for audio driver support
 

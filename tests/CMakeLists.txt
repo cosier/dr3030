@@ -15,11 +15,11 @@ include_directories(
   "${CMAKE_SOURCE_DIR}/src"
   )
 
-add_library(test_helper STATIC ${HELPER_LIB})
+add_library(drtest STATIC ${HELPER_LIB})
 # Test Executable that utilises the library.
 
 add_executable(test-dr test_dr.c)
 
 # Link up main executable with our Library: libdimappio
-target_link_libraries( test-dr 3030 test_helper)
+target_link_libraries( test-dr 3030 drtest)
 
