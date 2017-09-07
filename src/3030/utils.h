@@ -16,17 +16,17 @@
 #include <unistd.h>
 
 extern bool dm_driver_debug_mode;
-void dm_debug(const char* format, ...);
-void error(char* format, ...);
-void printd(const char* format, ...);
-void dm_clear(int lines);
-int64_t dm_micros();
+void dr_debug(const char* format, ...);
+void dr_error(char* format, ...);
+void dr_print(const char* format, ...);
+void dr_clear(int lines);
+int64_t dr_micros();
 
-int dm_count_lines(char* input);
-bool contains_bit(unsigned val, unsigned bitindex);
+int dr_count_lines(char* input);
+bool dr_contains_bit(unsigned val, unsigned bitindex);
 
-int dm_tokenize(char* src, char* delim, char** result);
-void dm_cat(char** buf, char* src);
+int dr_tokenize(char* src, char* delim, char** result);
+void dr_cat(char** buf, char* src);
 
 //////////////////////////////////////////////////////////
 // HERE BE APPLES

@@ -32,7 +32,7 @@ CFStringRef char_to_cf_string_ref(char* c) {
 
 static FILE* LOG_FILE = NULL;
 
-void printd(const char* format, ...) {
+void dr_print(const char* format, ...) {
 #ifdef _DEBUG_
     va_list* ap = malloc(sizeof(va_list));
     char* fmt = malloc(sizeof(char*) * 64);
@@ -47,7 +47,7 @@ void printd(const char* format, ...) {
 #endif
 }
 
-void dm_debug(const char* format, ...) {
+void dr_debug(const char* format, ...) {
 #ifdef _DEBUG_
     if (dm_driver_debug_mode) {
         if (LOG_FILE == NULL) {
@@ -61,7 +61,7 @@ void dm_debug(const char* format, ...) {
             free(file_log);
 
             if (LOG_FILE == NULL) {
-                error("Failed to write to log file");
+                dr_error("Failed to write to log file");
                 exit(EXIT_FAILURE);
             }
         }
@@ -79,7 +79,7 @@ void dm_debug(const char* format, ...) {
 #endif
 }
 
-int dm_count_lines(char* input) {
+int dr_count_lines(char* input) {
     int i = 0;
     int lines = 1;
     while (input[i] != '\0') {
@@ -91,7 +91,7 @@ int dm_count_lines(char* input) {
     return lines;
 }
 
-void dm_clear(int lines) {
+void dr_clear(int lines) {
     for (int i = 0; i < lines; ++i) {
         printf("\33[2K\r");
         printf("\33[1A\r");
@@ -99,14 +99,14 @@ void dm_clear(int lines) {
     }
 }
 
-int64_t dm_micros() {
+int64_t dr_micros() {
     struct timespec tms;
     timespec_get(&tms, TIME_UTC);
     int64_t micros = tms.tv_sec * 1000000;
     return micros += tms.tv_nsec / 1000;
 }
 
-void error(char* format, ...) {
+void dr_error(char* format, ...) {
     va_list ap;
     va_start(ap, format);
     char* fmt = malloc(sizeof(char*) * 64);
@@ -116,11 +116,11 @@ void error(char* format, ...) {
     putc('\n', stderr);
 }
 
-bool contains_bit(unsigned val, unsigned bitindex) {
+bool dr_contains_bit(unsigned val, unsigned bitindex) {
     return (val & (1 << bitindex)) != 0;
 }
 
-int dm_tokenize(char* src, char* delim, char** result) {
+int dr_tokenize(char* src, char* delim, char** result) {
     char* container = NULL;
     char* token = NULL;
     int i = 0;
@@ -149,7 +149,7 @@ int dm_tokenize(char* src, char* delim, char** result) {
  * Then once you are done with fast cat appendages, you may discard the stack
  * pointer.
  */
-void dm_cat(char** orig, char* src) {
+void dr_cat(char** orig, char* src) {
     // printf("dm_cat: appending(%s) to buf(%s)\n", src, buf);
     char* buf = *orig;
     assert(buf != NULL);
