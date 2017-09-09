@@ -249,6 +249,8 @@ int main(int argc, char** argv) {
     options->source = source;
     options->target = target;
 
+    dr_interface();
+
     // Engage in monitor loop.
     // Uses a source to poll events from.
     //
