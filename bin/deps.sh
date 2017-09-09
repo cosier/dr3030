@@ -13,3 +13,7 @@ fi
 ###############################
 # Build ubelt dependency
 $ROOT/vendor/ubelt/bin/build.sh
+
+###############################
+# Build dimappio dependency
+$ROOT/vendor/dimappio/bin/build.sh

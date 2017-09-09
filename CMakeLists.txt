@@ -36,35 +36,6 @@ set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror")
 set( VENDOR "${APP_ROOT}/vendor")
 set( VENDOR_INCLUDES "")
 
-# Break into conditionals for audio driver support
-if (APPLE)
-  find_library( coreaudio_lib CoreAudio )
-  find_library( coremidi_lib CoreMIDI )
-  find_library( corefoundation_lib CoreFoundation )
-  find_library( audiounit_lib AudioUnit )
-  find_library( audiotoolbox_lib AudioToolbox )
-
-  set( MIDI_LIBS
-    ${coreaudio_lib}
-    ${coremidi_lib}
-    ${corefoundation_lib}
-    ${audiounit_lib}
-    ${audiotoolbox_lib})
-
-  set( MIDI_DEFS __MACOSX_AU__ __MACOSX_CORE__ )
-
-elseif (MSVC)
-  set( MIDI_LIBS winmm )
-  set( MIDI_DEFS __WINDOWS_DM__ )
-
-elseif (UNIX)
-  find_package( ALSA REQUIRED )
-
-  set( MIDI_LIBS ${ALSA_LIBRARY} pthread )
-  set( MIDI_DEFS __LINUX_ALSA__ )
-
-endif ()
-
 enable_testing ()
 
 add_subdirectory("src/3030")
