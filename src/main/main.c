@@ -6,7 +6,6 @@
 #include <ubelt/utils.h>
 #include <dimappio/core.h>
 #include <3030/core.h>
-#include "version.h"
 
 void print_usage() {
     printf("Usage: dr3030 [options]\n\n");

@@ -43,8 +43,8 @@ add_subdirectory("src/main")
 add_subdirectory("tests")
 
 configure_file (
-  "${APP_ROOT}/src/version.h.in"
-  "${APP_ROOT}/src/version.h"
+  "${APP_ROOT}/src/3030/version.h.in"
+  "${APP_ROOT}/src/3030/version.h"
 )
 
 include_directories(

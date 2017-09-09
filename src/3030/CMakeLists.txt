@@ -66,7 +66,7 @@ set_property(TARGET dimappio PROPERTY IMPORTED_LOCATION
   ${VENDOR}/dimappio/build/src/dimappio/libdimappio.a)
 
 # Link Library support: libdimappio
-target_include_directories( ${APP_LIB_NAME} PUBLIC ./ )
+target_include_directories( ${APP_LIB_NAME} PUBLIC ${APP_ROOT}/src )
 target_include_directories( ${APP_LIB_NAME} PUBLIC ${VENDOR_INCLUDES} )
 
 target_link_libraries( ${APP_LIB_NAME}
