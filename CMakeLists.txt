@@ -1,10 +1,11 @@
 cmake_minimum_required(VERSION 3.6)
-project(${APP_LIB_NAME})
 
-set (APP_LIB_NAME $ENV{APP_LIB_NAME})
-set (APP_EXE_NAME $ENV{APP_MAIN_EXE})
+set (APP_LIB_NAME 3030)
+set (APP_EXE_NAME dr30)
+
 set (APP_ROOT ${CMAKE_CURRENT_SOURCE_DIR})
-set (VENDOR "${APP_ROOT}/vendor")
+
+project(${APP_LIB_NAME})
 
 set (DR_VERSION_MAJOR 0)
 set (DR_VERSION_MINOR 2)
@@ -32,6 +33,7 @@ set( CMAKE_C_STANDARD 11 )
 # Treat all warnings as intense errors.
 set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror")
 
+set( VENDOR "${APP_ROOT}/vendor")
 set( VENDOR_INCLUDES
   ${VENDOR}/ubelt/src
   ${VENDOR}/dimappio/src)
