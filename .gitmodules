@@ -1,3 +1,6 @@
 [submodule "vendor/dimappio"]
 	path = vendor/dimappio
 	url = git@github.com:cosier/dimappio
+[submodule "vendor/ubelt"]
+	path = vendor/ubelt
+	url = git@github.com:cosier/ubelt

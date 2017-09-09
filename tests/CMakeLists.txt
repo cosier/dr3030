@@ -21,5 +21,7 @@ add_library(drtest STATIC ${HELPER_LIB})
 add_executable(test-dr test_dr.c)
 
 # Link up main executable with our Library: libdimappio
-target_link_libraries( test-dr 3030 drtest)
+target_link_libraries( test-dr ${APP_LIB_NAME} drtest)
 
+
+add_test(NAME test-dr COMMAND test-dr)

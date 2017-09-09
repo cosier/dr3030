@@ -3,6 +3,7 @@
 #include <time.h>
 #include <unistd.h>
 
+#include <ubelt/utils.h>
 #include <dimappio/core.h>
 #include <3030/core.h>
 #include "version.h"
@@ -160,9 +161,9 @@ int main(int argc, char** argv) {
                 break;
             }
 
-            dr_cat(&cat_ptr, arg_str);
+            util_cat(&cat_ptr, arg_str);
             if (i < (opts - 1)) {
-                dr_cat(&cat_ptr, ", ");
+                util_cat(&cat_ptr, ", ");
             }
         }
     }
@@ -172,7 +173,7 @@ int main(int argc, char** argv) {
     // Flip global debug flag.
     if (debug) {
         dm_driver_debug();
-        dr_debug("\033c[dimappio started]: %lu\n", dr_micros());
+        util_debug("\033c[dimappio started]: %lu\n", util_micros());
     }
 
     // Version output and then exit.
@@ -225,22 +226,22 @@ int main(int argc, char** argv) {
         }
 
         // Build mappings from a comma delimited string.
-        dr_debug("main: attempting to build mappings from list using: %s\n",
+        util_debug("main: attempting to build mappings from list using: %s\n",
                  mapsrc);
         mapping = dm_mapping_from_list(mapsrc);
         // free(mapsrc);
     } else {
-        dr_debug("main: building solo mappings\n");
+        util_debug("main: building solo mappings\n");
         mapping = dm_build_mapping();
     }
 
     if (mapping == NULL) {
-        dr_error("Invalid Mapping provided\n");
-        dr_error("-----------------------------------\n");
+        util_error("Invalid Mapping provided\n");
+        util_error("-----------------------------------\n");
         print_usage();
         exit(EXIT_FAILURE);
     } else {
-        dr_debug("main: mappings created successfully\n");
+        util_debug("main: mappings created successfully\n");
     }
 
     dm_options* options = dm_create_options();
