@@ -1,5 +1,0 @@
-#define DR_VERSION_MAJOR "0"
-#define DR_VERSION_MINOR "2"
-#define DR_VERSION_PATCH "0"
-#define DR_VERSION_BUILD "6c73c32"
-#define DR_VERSION_DATE  "Sun Sep 10 00:31:42 +07 2017"

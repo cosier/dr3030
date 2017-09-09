@@ -6,9 +6,9 @@
 *.#*
 Testing
 
-vendor
 vendor/build
 bin/dr3030
+version.h
 
 
 # Rtags
