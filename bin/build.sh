@@ -5,6 +5,9 @@ ROOT=$( cd $BIN/../ && pwd )
 
 source $BIN/vars.sh
 
+# Ensure deps are properly built first.
+$BIN/deps.sh
+
 # Ensure build dir exists and change directory
 mkdir -p $BUILD_DIR && cd $BUILD_DIR;
 

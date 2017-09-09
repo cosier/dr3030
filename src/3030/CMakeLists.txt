@@ -28,18 +28,20 @@ endforeach( PATH )
 # 2. A Executable that utilises the library.
 add_library(${APP_LIB_NAME} STATIC ${SRC_LIB})
 
-# Everybody needs curses
-find_library( ncurses_lib ncurses )
+add_library(ubelt STATIC IMPORTED)
+set_property(TARGET ubelt PROPERTY
+  IMPORTED_LOCATION ${VENDOR}/ubelt/build/libubelt.a)
 
 # Link Library support: libdimappio
 target_include_directories( ${APP_LIB_NAME} PUBLIC ./ )
 target_include_directories( ${APP_LIB_NAME} PUBLIC ${VENDOR_INCLUDES} )
 
 target_link_libraries( ${APP_LIB_NAME}
-  m
   dimappio
+  ncurses
   ubelt
-  ${ncurses_lib} )
+  m
+  ${MIDI_LIBS})
 
 
 
